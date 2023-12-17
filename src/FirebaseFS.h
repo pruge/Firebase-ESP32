@@ -8,8 +8,9 @@
 
 #pragma once
 
-#include <Arduino.h>
 #include "mbfs/MB_MCU.h"
+#include <Arduino.h>
+
 
 /**📍 Default Main Class */
 #define FIREBASE_ESP32_CLIENT 1
@@ -79,9 +80,8 @@
  */
 #define FIREBASE_USE_PSRAM
 
-/**📍 For enabling OTA updates support via RTDB, Firebase Storage and Google Cloud Storage buckets
- * ⛔ Use following build flag to disable.
- * -D DISABLE_OTA
+/**📍 For enabling OTA updates support via RTDB, Firebase Storage and Google
+ * Cloud Storage buckets ⛔ Use following build flag to disable. -D DISABLE_OTA
  */
 #define ENABLE_OTA_FIRMWARE_UPDATE
 
@@ -119,22 +119,26 @@
 
 #if defined(ESP32) || defined(ESP8266) || defined(MB_ARDUINO_PICO)
 
-#if defined(ESP8266) || defined(MB_ARDUINO_PICO)
-
 #include <LittleFS.h>
 #define DEFAULT_FLASH_FS LittleFS
 
-#elif defined(ESP_ARDUINO_VERSION) /* ESP32 core >= v2.0.x */ /* ESP_ARDUINO_VERSION >= ESP_ARDUINO_VERSION_VAL(2, 0, 0) */
+// #if defined(ESP8266) || defined(MB_ARDUINO_PICO)
 
-#include <LittleFS.h>
-#define DEFAULT_FLASH_FS LittleFS
+// #include <LittleFS.h>
+// #define DEFAULT_FLASH_FS LittleFS
 
-#else
+// #elif defined(ESP_ARDUINO_VERSION) /* ESP32 core >= v2.0.x */ /*
+// ESP_ARDUINO_VERSION >= ESP_ARDUINO_VERSION_VAL(2, 0, 0) */
 
-#include <SPIFFS.h>
-#define DEFAULT_FLASH_FS SPIFFS
+// #include <LittleFS.h>
+// #define DEFAULT_FLASH_FS LittleFS
 
-#endif
+// #else
+
+// #include <SPIFFS.h>
+// #define DEFAULT_FLASH_FS SPIFFS
+
+// #endif
 
 #endif
 
@@ -179,11 +183,13 @@
  *
  * 🏷️ For external Ethernet module support.
  * - Should define both library name and class object name.
- * - FIREBASE_ETHERNET_MODULE_LIB is the Ethernet library name with extension (.h) and
- *   should be inside "" or <> e.g. "Ethernet.h".
- * - FIREBASE_ETHERNET_MODULE_CLASS is the name of static object defined from class e.g. Ethernet.
- * - FIREBASE_ETHERNET_MODULE_TIMEOUT is the time out in milliseconds to wait network connection.
- * 
+ * - FIREBASE_ETHERNET_MODULE_LIB is the Ethernet library name with extension
+ * (.h) and should be inside "" or <> e.g. "Ethernet.h".
+ * - FIREBASE_ETHERNET_MODULE_CLASS is the name of static object defined from
+ * class e.g. Ethernet.
+ * - FIREBASE_ETHERNET_MODULE_TIMEOUT is the time out in milliseconds to wait
+ * network connection.
+ *
  * #define FIREBASE_ETHERNET_MODULE_LIB "EthernetLib.h"
  * #define FIREBASE_ETHERNET_MODULE_CLASS EthernetClass
  * #define FIREBASE_ETHERNET_MODULE_TIMEOUT 2000
@@ -191,9 +197,9 @@
  * 🏷️ For disabling on-board WiFI functionality in case external Client usage
  * #define FIREBASE_DISABLE_ONBOARD_WIFI
  *
- * 🏷️ For disabling native (sdk) Ethernet functionality in case external Client usage
- * #define FIREBASE_DISABLE_NATIVE_ETHERNET
- * 
+ * 🏷️ For disabling native (sdk) Ethernet functionality in case external Client
+ * usage #define FIREBASE_DISABLE_NATIVE_ETHERNET
+ *
  * 🏷️ For debug port assignment.
  * #define FIREBASE_DEFAULT_DEBUG_PORT Serial
  *
